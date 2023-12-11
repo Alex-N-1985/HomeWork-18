@@ -69,18 +69,20 @@
         }
     </script>
     <h3>Task 5</h3>
+    <input id="num" type="hidden"><br>
+    <input id="answer" type="number" min="0" max="100" value="0"><button onclick="btnclick()">Enter</button><br>
     <p id="task5"></p>
     <script>
         let n = getRandomNumber(100, 0);
-        alert(n);
+        document.getElementById("num").innerText = n;
         let ans = -1;
         let count = 0;
-        while (n !== ans){
-            ans = parseInt(prompt("Введите число:"));
-            if ((ans <= n - 5) && (ans >= n + 5)){
+        function btnclick(){
+            ans = parseInt(document.getElementById("answer").innerText);
+            if ((ans >= (n - 5)) || (ans <= (n + 5))){
                 document.getElementById("task5").innerText += "Горячо!\n";
                 console.log("Горячо!");
-            } else if ((ans <= n - 10) && (ans >= n + 10)){
+            } else if ((ans >= (n - 10)) || (ans <= (n + 10))){
                 document.getElementById("task5").innerText += "Тепло!\n";
                 console.log("Тепло!");
             } else {
@@ -88,9 +90,12 @@
                 console.log("Холодно!");
             }
             count++;
+            alert(typeof(n) + " " + typeof(ans))
+            if (n == ans) {
+                document.getElementById("task5").innerText += "\n Число " + n + " угадано за " + count + " ходов.";
+                console.log("\n Число угадано за " + count + " ходов.");
+            }
         }
-        document.getElementById("task5").innerText += "\nЧисло " + n + " угадано за " + count + " ходов.";
-        console.log("\nЧисло угадано за " + count + " ходов.");
     </script>
 </body>
 </html>
